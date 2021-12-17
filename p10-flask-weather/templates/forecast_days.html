@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>7-dnevna prognoza</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Datum</td>
+            <th>Temperatura</td>
+            <th>Opis</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for day in weather.list %}
+        <tr>
+            <td>{{ day.dt | datetime('%A %d.%m') }}</td>
+            <td>{{ day.temp.min | round | int }} / {{ day.temp.max | round | int }} C˙</td>
+            <td><img src="http://openweathermap.org/img/wn/{{day.weather[0].icon}}.png">{{ day.weather[0].description }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ url_for('index') }}" class="btn btn-primary">Povratak</a>
+
+{% endblock %}
