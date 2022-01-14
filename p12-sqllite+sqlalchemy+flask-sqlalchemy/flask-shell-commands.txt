@@ -1,0 +1,60 @@
+pip install flask flask-sqlalchemy
+
+$env:FLASK_APP="flasksql1.py"
+$env:FLASK_DEBUG=1
+
+(venv) flask shell
+>>>  from flasksql1 import db
+>>>  db.create_all()
+>>>  from flasksql1 import Role, User
+>>>  admin_role = Role(name='Admin')
+>>> mod_role = Role(name='Moderator')
+>>> user_role = Role(name='User')
+>>> user_ive = User(username='ive', role=admin_role)
+>>> user_ivana = User(username='ivana', role=user_role)
+>>> user_stipe = User(username='stipe', role=user_role)
+>>> print(admin_role)
+<Role 'Admin'>
+>>> db.session.add(admin_role)
+>>> db.session.add_all([mod_role, user_role, user_ive, user_ivana, user_stipe])
+>>> db.session.commit()
+>>> print(admin_role.id)
+1
+>>> print(user_role.id)
+3
+
+# QUERYING
+>>> Role.query.all()
+[<Role 'Admin'>, <Role 'Moderator'>, <Role 'User'>]
+>>> User.query.all()
+[<User 'ive'>, <User 'ivana'>, <User 'stipe'>]
+>>> User.query.filter_by(role=user_role).all()
+[<User 'ivana'>, <User 'stipe'>]
+>>> str(User.query)
+'SELECT users.id AS users_id, users.username AS users_username, users.role_id AS users_role_id \nFROM users'
+>>> Role.query.first()
+<Role 'Admin'>
+>>> user_role
+>>> Role.query.first()
+<Role 'Admin'>
+>>> user_role
+<Role 'User'>
+>>> user_role.users
+[<User 'ivana'>, <User 'stipe'>]
+>>> user_role.users[0]
+<User 'ivana'>
+>>> user_role.users[0].role
+<Role 'User'>
+
+
+# Update
+>>> admin_role.name = 'Administrator'
+>>> print(admin_role)
+<Role 'Administrator'>
+>>> db.session.add(admin_role)
+>>> db.session.commit()
+
+
+# Delete
+>>> db.session.delete(mod_role)
+>>> db.session.commit()
