@@ -8,6 +8,6 @@ Popis predavanja:
 ### [Predavanje 12 - SQLite, SQLAlchemy, flask-sqlalchemy](./p12-sqllite+sqlalchemy+flask-sqlalchemy/) 
 > _održano 14.01.2022._
 
-### [Predavanje 13 - FlaskSQLAlchemy, Migracije, Autentikacija (flask-login)](./p13-sqllite+sqlalchemy+flask-sqlalchemy/) 
+### [Predavanje 13 - FlaskSQLAlchemy, Migracije, Autentikacija (flask-login)](./p13-flask-sqlalchemy+migracije/) 
 > _održano 20.01.2022._
 
