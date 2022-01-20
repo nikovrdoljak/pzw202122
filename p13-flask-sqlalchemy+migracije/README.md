@@ -8,7 +8,7 @@ Za rad na ovom predavanju krećemo od mape ```begin```, dok se završni kod cije
 
 ## Zadatak 1 - pokrenuti projekt i dodati CSS temu
 * Klonirati projekt, aktivirati virualnu okolinu, instalirati potrebne ekstenzije, podesiti potrebne Flask varijable, te pokrenuti projekt.
-  * ```git clone http://www.... i pozicionirajte se u mapu "p13-.../begin"```
+  * ```git clone https://github.com/nikovrdoljak/pzw202122 i pozicionirajte se u mapu "p13-.../begin"```
   * ```py -m venv venv```
   * ```.\venv\Scripts\Activate.ps1```
   * ```pip install -r requirements.txt```
