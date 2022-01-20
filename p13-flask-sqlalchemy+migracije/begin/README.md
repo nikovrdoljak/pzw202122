@@ -1,4 +1,4 @@
-# Predavanje 12: FlaskSQLAlchemy, Migracije, Autentikacija (flask-login)
+# Predavanje 13: FlaskSQLAlchemy, Migracije, Autentikacija (flask-login)
 Predavanje se nastavlja na predavanje 10 (u kojem smo se upoznali s SQLite bazom podataka i SQLAlchemy ekstenzijom), a pokazat ćemo kako povezati Flask view funkcije i forme s bazom podataka uz pomoć [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/) ekstenzije. U bazu podataka ćmo spremati korisnike, pregledavati ih, mijenjati i brisati.
 
 U drugom dijelu predavanja pokazat ćemo rad s migracijskim skriptama za rad s bazom podataka. Koristit ćemo [Flask-Migrate](https://flask-migrate.readthedocs.io/) ekstenziju.
