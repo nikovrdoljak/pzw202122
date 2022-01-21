@@ -90,6 +90,9 @@ def index():
     <p>Drago mi je da ste se vratili!</p>
     {% endif %}
 </div>
+<div class="col-md-4">
+    {{ render_form(form) }}
+</div>
 ```
 * Prije ponovnog pokretanja aplikacije pokrenite slijedeći kod u Flask konzoli kako biste kreirali SQLite bazu podataka, te ju pregledajte u programu "DB Browser (SQLite)":
 ```python
