@@ -221,7 +221,11 @@ flask db migrate -m "initial migration"
 flask db upgrade
 ```
 * Pregledajte novostvorenu bazu
-* Dodajte novo polje u User klasu. Npr. email. Ponovite naredbe:
+* Dodajte novo polje u User klasu. Npr. email. 
+```python
+email = db.Column(db.String(64))
+```
+Ponovite naredbe:
 ```
 flask db migrate -m "dodan email"
 flask db upgrade
@@ -289,7 +293,7 @@ class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), unique=True, index=True)
-    email = db.Column(db.String(64), unique=True)
+    email = db.Column(db.String(64))
     password_hash = db.Column(db.String(128))
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     
@@ -307,6 +311,9 @@ class User(db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 ```
+Primijetite da u bazu dodajemo polje ```password_hash```, dok u klasi koristimo svojstvo ```password()``` kojim postavljamo (setter) hash u bazi.
+
+Također smo dodali klasi metodu ```verify_password()``` kojom provjeravamo da li zaporka koju želimo provjeriti odgovara *hash-u* u bazi.
 
 Kreiramo skriptu i ažurirajmo novu bazu:
 ```
@@ -582,7 +589,8 @@ admin.add_view(ModelView(User, db.session))
 admin.add_view(ModelView(Role, db.session))
 ```
 Pokrenimo aplikaciju te odimo na adresu [http://localhost:5000/admin/](http://localhost:5000/admin/). Izgled _admin_ stranice je slijedeći:
-![flask-admin-home](./static/images/flask-admin-1.png)
+
+![flask-admin-home](./begin/static/images/flask-admin-1.png)
 Na ovoj stranici sad možemo pregledavati podatke u tablicama _user_ i _role_, uređivati ih brisati, odnosno vršiti sve _CRUD (Create, Read, Update, Delete)_ funkcije nad podacima.
 
 Ako želimo da ova  _admin_ sekcija aplikacije bude u skladu s našim layoutom, možemo uključiti _bootsrap4_ i _bootswatch_ temu koju koristimo, izmijenimo dio koda:
@@ -591,7 +599,8 @@ app.config['FLASK_ADMIN_SWATCH'] = 'minty'
 admin = Admin(app, template_mode='bootstrap4')
 ```
 Stranica je sad malo izmijenjena:
-![flask-admin-home](./static/images/flask-admin-2.png)
+
+![flask-admin-home](./begin/static/images/flask-admin-2.png)
 
 Primijetili ste da je početna stranica _admin_ sekcije prazna. Nju možete lako promijeniti, tj. dodati je na način da u _templates_ mapi stvorite mapu _admin_ te datoteku ```index.html``` sa npr. slijedećim sadržajem:
 ```jinja
