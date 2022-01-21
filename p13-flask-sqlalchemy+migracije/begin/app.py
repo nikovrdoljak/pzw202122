@@ -9,10 +9,6 @@ app.config['SECRET_KEY'] = 'blablastring'
 
 bootstrap = Bootstrap(app)
 
-class NameForm(FlaskForm):
-    name = StringField('Kako se zoveš?', validators=[DataRequired()])
-    submit = SubmitField('Pošalji')
-
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
     return render_template('index.html')
