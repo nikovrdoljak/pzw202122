@@ -591,6 +591,7 @@ admin.add_view(ModelView(Role, db.session))
 Pokrenimo aplikaciju te odimo na adresu [http://localhost:5000/admin/](http://localhost:5000/admin/). Izgled _admin_ stranice je slijedeći:
 
 ![flask-admin-home](./begin/static/images/flask-admin-1.png)
+
 Na ovoj stranici sad možemo pregledavati podatke u tablicama _user_ i _role_, uređivati ih brisati, odnosno vršiti sve _CRUD (Create, Read, Update, Delete)_ funkcije nad podacima.
 
 Ako želimo da ova  _admin_ sekcija aplikacije bude u skladu s našim layoutom, možemo uključiti _bootsrap4_ i _bootswatch_ temu koju koristimo, izmijenimo dio koda:
