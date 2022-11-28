@@ -338,14 +338,14 @@ True
 Dodat ćemo sad formu za logiranje te pripadnu programsku logiku uz pomoć [flask-login](https://flask-login.readthedocs.io/en/latest/) ekstenzije. Dodajmo najprije klasu za *login* formu u ```app.py```:
 ```python
 class LoginForm(FlaskForm):
-    email = TextField('E-mail', validators=[DataRequired(), Length(1, 64), Email()])
+    email = StringField('E-mail', validators=[DataRequired(), Length(1, 64), Email()])
     password = PasswordField('Zaporka', validators=[DataRequired()])
     remember_me = BooleanField('Ostani prijavljen')
     submit = SubmitField('Prijava')
 ```
 te uvezimo dodatne potrebne module:
 ```python
-from wtforms import TextField, PasswordField, BooleanField
+from wtforms import PasswordField, BooleanField
 from wtforms.validators import Length, Email
 ```
 Email validator je potrebno zasebno instalirati:
@@ -495,7 +495,7 @@ def register():
     return render_template('register.html', form=form)
 
 class RegisterForm(FlaskForm):
-    email = TextField('E-mail', validators=[DataRequired(), Length(1, 64), Email()])
+    email = StringField('E-mail', validators=[DataRequired(), Length(1, 64), Email()])
     password = PasswordField('Zaporka', validators=[DataRequired(), EqualTo('password2', message='Zaporke moraju biti jednake.')])
     password2 = PasswordField('Potvrdi zaporku', validators=[DataRequired()])
     submit = SubmitField('Registracija')
