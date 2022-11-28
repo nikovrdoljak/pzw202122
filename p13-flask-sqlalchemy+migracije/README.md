@@ -533,8 +533,8 @@ Ovdje ćemo samo pokazati kako bi trebao izgledati proces potvrde registracije. 
 Taj link mora imati korisničko ime kriptirano, stoga moramo napraviti otprilike slijedeće:
 ```python
 flask shell
->>> from itsdangerous import TimedJSONWebSignatureSerializer as serializer
->>> s = serializer(app.config['SECRET_KEY'], expires_in=3600)
+>>> from itsdangerous import URLSafeTimedSerializer as serializer
+>>> s = serializer(app.config['SECRET_KEY'])
 >>> token = s.dumps({ 'potvrdi': 'nvrdoljak@unizd.hr' })
 >>> token
 b'eyJhbGciOiJIUzUxMiIsImlhdCI6MTU0MzkyMTE4NiwiZXhwIjoxNTQzOTI0Nzg2fQ.eyJwb3R2cmRpIjoibWFyaW9AdW5pemQuaHIifQ.tFRcBO0gjDzDcD4AL0eRx453ULdaq07MKWE6y-Nt8MnL3tesH7_VbFIFlcZSE2AxB1EdC3jbRdxSQ3o4JwDX_w'
